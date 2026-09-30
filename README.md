@@ -9,16 +9,20 @@ index.html
 assets/
   pranish-photo.jpg
   wallcue-preview.webp
-  hum-preview.webp
+  dual-drive-preview.webp
   skills-preview.webp
   mallicks-preview.webp
 case-studies/
   wallcue.html
-  hum-discordance-decoder.html
+  dual-drive.html
   skills-platform.html
   mallicks-kitchen.html
 README.md
 ```
+
+## Featured work
+
+Dual Drive replaces Hum in the homepage Selected Work sections and links to `case-studies/dual-drive.html`.
 
 ## Navigation
 

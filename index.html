@@ -72,7 +72,7 @@ button{font:inherit}
 .navlinks .cta{background:#111722;color:#fff}
 
 .hero{min-height:100svh;padding:110px 0 36px;display:flex;align-items:center}
-.hero-grid{display:grid;grid-template-columns:1.02fr .72fr 1.08fr;gap:28px;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1fr .52fr 1.95fr;gap:24px;align-items:center}
 .kicker{font-size:10px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:var(--blue)}
 h1{
   margin:14px 0 0;max-width:600px;font-size:clamp(50px,6.1vw,82px);
@@ -183,7 +183,7 @@ h1 em{
 .visual{display:flex;align-items:center;justify-content:center;padding:18px;height:340px}
 .visual img{max-width:90%;max-height:285px;object-fit:contain;border-radius:18px;box-shadow:0 18px 42px rgba(30,45,80,.13)}
 .wall{background:linear-gradient(135deg,#e8f2ff,#dfeaff,#eff6ff)}
-.hum{background:linear-gradient(135deg,#edf1ff,#efe7ff,#ecfbff)}
+.dual{background:linear-gradient(135deg,#e7f8ff,#e4f0ff,#eef6ff)}
 .skills{background:linear-gradient(135deg,#e8f6ff,#e2f5f3,#f0edff)}
 .mallicks{background:linear-gradient(135deg,#fff0f4,#fff6e9,#ffedf8)}
 
@@ -365,7 +365,7 @@ html.dark, html[data-theme="dark"] .work-card p,html.dark, html[data-theme="dark
 html.dark, html[data-theme="dark"] .arrow,html.dark, html[data-theme="dark"] .actions a,html.dark, html[data-theme="dark"] .tags span{background:rgba(255,255,255,.08);color:#edf2ff}
 html.dark, html[data-theme="dark"] .fact{background:rgba(255,255,255,.05)} html.dark, html[data-theme="dark"] .fact span{color:#9ba7bd}
 html.dark, html[data-theme="dark"] .wall{background:linear-gradient(135deg,#18243b,#172239,#182b3d)}
-html.dark, html[data-theme="dark"] .hum{background:linear-gradient(135deg,#1c213d,#25203d,#17303a)}
+html.dark, html[data-theme="dark"] .dual{background:linear-gradient(135deg,#101d33,#102c42,#10233d)}
 html.dark, html[data-theme="dark"] .skills{background:linear-gradient(135deg,#172b3a,#183330,#292342)}
 html.dark, html[data-theme="dark"] .mallicks{background:linear-gradient(135deg,#39212d,#30291e,#34233a)}
 html.dark, html[data-theme="dark"] .bigword{color:rgba(220,230,255,.08)}
@@ -375,9 +375,9 @@ html.dark, html[data-theme="dark"] .work-head span,html.dark, html[data-theme="d
 .theme-toggle svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8}
 html.dark, html[data-theme="dark"] .theme-toggle{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.13)}
 html.dark, html[data-theme="dark"] .theme-toggle:hover{background:rgba(255,255,255,.14)}
-/* Opening-page selected work: compact 2 × 2 editorial grid */
-.work-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.work-card{grid-template-columns:52px minmax(0,1fr) 28px;gap:10px;min-width:0;padding:10px;border-radius:19px;align-items:center}
+/* Opening-page selected work: restore the original 2 × 2 grid */
+.work-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:stretch}
+.work-card{grid-template-columns:52px minmax(0,1fr) 28px;gap:10px;min-width:0;min-height:84px;height:84px;padding:10px;border-radius:19px;align-items:center}
 .work-card>div:nth-child(2){min-width:0}
 .work-card h3,.work-card p,.index{overflow-wrap:anywhere}
 .work-card h3{font-size:15px}
@@ -479,7 +479,7 @@ body,button,input,textarea,select,a,h1,h2,h3,h4,h5,h6,p,span,div{font-family:Int
   <div class="work-head"><h2>Selected work</h2><span>04 case studies</span></div>
   <div class="work-list">
     <a class="work-card glass a-blue" href="case-studies/wallcue.html"><div class="thumb"><img src="assets/wallcue-preview.webp" alt=""></div><div><div class="index">01 · Spatial / Product</div><h3>WallCue</h3><p>Turning the shared wall into a peace treaty.</p></div><span class="arrow">↗</span></a>
-    <a class="work-card glass a-lav" href="case-studies/hum-discordance-decoder.html"><div class="thumb"><img src="assets/hum-preview.webp" alt=""></div><div><div class="index">02 · Emotional / Digital</div><h3>Hum</h3><p>Making emotional context travel without surveillance.</p></div><span class="arrow">↗</span></a>
+    <a class="work-card glass a-lav" href="case-studies/dual-drive.html"><div class="thumb"><img src="assets/dual-drive-preview.webp" alt="Dual Drive preview"></div><div><div class="index">02 · Automotive / HMI</div><h3>Dual Drive</h3><p>Designing shared interaction around driver attention.</p></div><span class="arrow">↗</span></a>
     <a class="work-card glass a-cyan" href="case-studies/skills-platform.html"><div class="thumb"><img src="assets/skills-preview.webp" alt=""></div><div><div class="index">03 · Enterprise / UX</div><h3>Skills Platform</h3><p>Designing for proof, not just polish.</p></div><span class="arrow">↗</span></a>
     <a class="work-card glass a-pink" href="case-studies/mallicks-kitchen.html"><div class="thumb"><img src="assets/mallicks-preview.webp" alt=""></div><div><div class="index">04 · Service / Product</div><h3>Mallick's Kitchen</h3><p>Closing the reassurance gap in contactless dining.</p></div><span class="arrow">↗</span></a>
   </div>
@@ -510,7 +510,7 @@ body,button,input,textarea,select,a,h1,h2,h3,h4,h5,h6,p,span,div{font-family:Int
 
 <a class="project glass wall" href="case-studies/wallcue.html"><div class="copy"><div><div class="number">01 / WALLCUE</div><h3>From noise monitor to diplomacy mesh.</h3><p class="thesis">A privacy-first physical and digital system designed to reduce neighbour friction without turning sound into ammunition or forcing confrontation.</p><div class="meta"><span>Product design</span><span>Hardware + digital</span><span>Privacy-first</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/wallcue-preview.webp" alt="WallCue interface"></div></a>
 
-<a class="project glass hum" href="case-studies/hum-discordance-decoder.html"><div class="copy"><div><div class="number">02 / HUM</div><h3>Everyone is typing in two voices.</h3><p class="thesis">An emotional layer for messaging that explores how typing tension and social capacity can travel with a message without exposing deleted content.</p><div class="meta"><span>UX research</span><span>Interaction design</span><span>Privacy-first</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/hum-preview.webp" alt="Hum interface"></div></a>
+<a class="project glass dual" href="case-studies/dual-drive.html"><div class="copy"><div><div class="number">02 / DUAL DRIVE</div><h3>Designing shared interaction around driver attention.</h3><p class="thesis">A timing-aware automotive HMI that coordinates passenger input with a driver-facing HUD, prioritising safety, clarity and information timing.</p><div class="meta"><span>Automotive HMI</span><span>Human factors</span><span>Usability testing</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/dual-drive-preview.webp" alt="Dual Drive automotive HMI"></div></a>
 
 <a class="project glass skills" href="case-studies/skills-platform.html"><div class="copy"><div><div class="number">03 / SKILLS PLATFORM</div><h3>Designing for proof, not just polish.</h3><p class="thesis">An enterprise career-development platform where employee input, AI-inferred skills and manager validation needed to remain understandable and trustworthy.</p><div class="meta"><span>Enterprise UX</span><span>Usability testing</span><span>Design systems</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/skills-preview.webp" alt="Skills Platform"></div></a>
 
