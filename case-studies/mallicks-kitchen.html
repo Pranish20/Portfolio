@@ -466,13 +466,120 @@ html[data-theme="dark"] .case-theme-toggle .moon-icon{display:block}
 })();
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style id="portfolio-inter-font">
+html,body,body *{font-family:Inter,Arial,sans-serif!important}
+</style>
+
+<style id="portfolio-typography-alignment-polish">
+/* Portfolio-wide typography and spacing refinement.
+   Keep each project's colour system, imagery and interactions unchanged. */
+html { text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+body { text-rendering: optimizeLegibility; font-kerning: normal; }
+
+body h1,
+body .hero h1,
+body .hero-copy h1 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.04 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: manual;
+  text-wrap: balance;
+}
+body h2 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.10 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: manual;
+  text-wrap: balance;
+}
+body h3 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.18 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: manual;
+  text-wrap: pretty;
+}
+body h4 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing: -0.005em !important;
+  line-height: 1.24 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+body h5,
+body h6 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+  line-height: 1.30 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+/* Small uppercase labels should remain legible rather than cramped. */
+body .kicker,
+body .eyebrow,
+body .number,
+body .index,
+body .num,
+body .caption .label {
+  line-height: 1.45;
+  letter-spacing: .12em;
+}
+
+/* Align the reading column across case studies without changing their card designs. */
+body .container,
+body .wrap {
+  width: min(calc(100% - clamp(32px, 5vw, 64px)), 1180px) !important;
+  margin-inline: auto !important;
+}
+body .section {
+  padding-block: clamp(64px, 6.5vw, 92px) !important;
+}
+body .section.compact {
+  padding-block: clamp(44px, 5vw, 66px) !important;
+}
+body .section-head p,
+body .section-title > p {
+  line-height: 1.65;
+  max-width: 64ch;
+}
+
+@media (max-width: 700px) {
+  body .container,
+  body .wrap {
+    width: calc(100% - 32px) !important;
+  }
+  body .section {
+    padding-block: 48px !important;
+  }
+  body .section.compact {
+    padding-block: 36px !important;
+  }
+  body h1,
+  body .hero h1,
+  body .hero-copy h1 {
+    letter-spacing: -0.028em !important;
+    line-height: 1.06 !important;
+  }
+  body h2 { letter-spacing: -0.02em !important; line-height: 1.12 !important; }
+  body h3 { letter-spacing: -0.01em !important; line-height: 1.2 !important; }
+}
+</style>
+
 </head>
 <body>
 
 <header class="case-nav">
   <div class="case-nav-inner">
-    <a class="case-back" href="/" aria-label="Back to portfolio">← Back</a>
-    <a class="case-home" href="/" aria-label="Return to portfolio home">Pranish Katta<span class="mark"> · UX</span></a>
+    <a class="case-back" href="../index.html" aria-label="Back to portfolio">← Back</a>
+    <a class="case-home" href="../index.html" aria-label="Return to portfolio home">Pranish Katta<span class="mark"> · UX</span></a>
     <nav class="case-nav-links" aria-label="Case study navigation">
       <a href="#top">Overview</a>
       <a href="#research">Research</a>

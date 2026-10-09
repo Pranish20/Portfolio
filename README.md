@@ -1,58 +1,23 @@
 # Pranish Katta — UX / Product Design Portfolio
 
-Complete static portfolio package for Netlify, Vercel or GitHub Pages.
+Complete static portfolio package with consistent heading spacing, typography and section alignment.
 
 ## Folder structure
 
-```text
-index.html
-assets/
-  pranish-photo.jpg
-  wallcue-preview.webp
-  dual-drive-preview.webp
-  skills-preview.webp
-  mallicks-preview.webp
-case-studies/
-  wallcue.html
-  dual-drive.html
-  skills-platform.html
-  mallicks-kitchen.html
-README.md
-```
+- `index.html` — portfolio homepage with clickable coffee mug and animated steam
+- `assets/` — mug, portrait and project preview assets
+- `case-studies/` — WallCue, Dual Drive, Skills Platform and Mallick's Kitchen
+- `references/` — layout reference assets
 
-## Featured work
+## Updates in this version
 
-Dual Drive replaces Hum in the homepage Selected Work sections and links to `case-studies/dual-drive.html`.
+- Added a theme-aware Behance button below the “A little more about me” heading, linking to Pranish’s additional projects and work.
 
-## Navigation
-
-- The **Pranish Katta · UX** logo on every case study links to the portfolio homepage.
-- The **← Back** button on every case study returns to the portfolio homepage.
-
-## Typography
-
-The portfolio and case studies use **Inter** consistently. Heading letter spacing and line heights have been normalised so the typography reads as one system.
-
-## Homepage photo
-
-The portrait has been repositioned into the lower part of the hero copy area to use the previously empty space more intentionally.
+- Refined heading letter spacing and line heights across the homepage and all case studies so letters are not cramped and line breaks feel more intentional.
+- Standardised case-study content width and section padding across desktop and mobile.
+- Improved readability of small uppercase labels.
+- Preserved project-specific colours, theme toggles, content, imagery, case-study navigation and the coffee email interaction.
 
 ## Deployment
 
-Upload the **contents of this folder** to the root of your static hosting project. Do not upload the ZIP itself.
-
-No build command is required.
-
-For Netlify/Vercel, the deployed root must contain `index.html` plus the `assets` and `case-studies` folders.
-
-
-## Responsive update
-
-The portfolio has been refined for mobile and tablet:
-- Hero typography scales down without overflowing.
-- Portrait, interactive object and selected-work cards use compact proportions.
-- Project cards stack vertically on narrow screens.
-- Section spacing and card padding are reduced for mobile.
-- Case-study navigation remains compact with a persistent logo/home link and Back button.
-- Case-study grids and galleries collapse cleanly to one column.
-- Large headings, quotes and metrics scale down to avoid disproportionate layouts.
+Upload the contents of this folder to your static hosting root. Keep `index.html`, `assets/` and `case-studies/` together. No build command is required.

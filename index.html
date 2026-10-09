@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f5f8ff">
+<meta name="theme-color" content="#f2f2f0">
 <title>Pranish Katta — UX / Product Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -429,7 +429,691 @@ body,button,input,textarea,select,a,h1,h2,h3,h4,h5,h6,p,span,div{font-family:Int
   .hero-copy h1{font-size:clamp(42px,12vw,52px)}
 }
 
+
+/* COFFEE EDITION — shared portfolio design tokens */
+:root{
+  --bg:#f2f2f0;
+  --surface:rgba(255,255,255,.82);
+  --surface-solid:#fffefa;
+  --text:#181818;
+  --muted:#5d5a55;
+  --blue:#88745f;
+  --lav:#b9a995;
+  --cyan:#a99a88;
+  --pink:#e8dfd4;
+  --border:rgba(36,30,24,.12);
+  --shadow:0 18px 55px rgba(45,37,29,.075);
+  --max:1640px;
+  --steam-color:#9e968b;
+}
+:root[data-theme="dark"],html.dark{
+  --bg:#11110f;
+  --surface:rgba(30,28,25,.86);
+  --surface-solid:#1b1916;
+  --text:#f4f0e9;
+  --muted:#b7afa5;
+  --blue:#d0b89e;
+  --lav:#ad9a85;
+  --cyan:#c5b6a3;
+  --pink:#7f6d5a;
+  --border:rgba(243,234,222,.13);
+  --shadow:0 22px 60px rgba(0,0,0,.30);
+  --steam-color:#e8e0d5;
+}
+html,body{background:var(--bg);color:var(--text)}
+body,button,input,textarea,select,a,h1,h2,h3,h4,h5,h6,p,span,div,li,small,strong,figure,figcaption{
+  font-family:Inter,Arial,sans-serif!important;
+}
+body:before{
+  background:
+    radial-gradient(780px 560px at 70% 24%,rgba(170,151,129,.105),transparent 72%),
+    radial-gradient(680px 440px at 0% 100%,rgba(255,255,255,.50),transparent 68%),
+    linear-gradient(135deg,#f2f2f0 0%,#f8f7f4 52%,#eeede9 100%);
+}
+html[data-theme="dark"] body:before,html.dark body:before{
+  background:
+    radial-gradient(780px 560px at 70% 24%,rgba(177,144,108,.09),transparent 72%),
+    linear-gradient(135deg,#11110f 0%,#191714 54%,#10100e 100%);
+}
+.container{width:min(calc(100% - 64px),var(--max))}
+.glass{
+  background:var(--surface);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow),inset 0 1px 0 rgba(255,255,255,.42);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+.nav{
+  top:16px;width:min(calc(100% - 48px),1600px);height:58px;
+  border:1px solid var(--border);background:var(--surface);
+  box-shadow:0 12px 36px rgba(30,25,20,.055);
+}
+.brand{color:var(--text)}
+.brand span{color:var(--blue)}
+.navlinks{gap:5px}
+.navlinks a{font-size:11px;font-weight:650;color:var(--muted);padding:9px 12px;border-radius:999px}
+.navlinks a:hover{background:rgba(136,116,95,.10);color:var(--text)}
+.navlinks .cta,.navlinks .cta:hover{background:#181818;color:#fff;border:1px solid #181818}
+.theme-toggle{background:rgba(255,255,255,.7);border-color:var(--border);color:var(--text)}
+.hero{min-height:100svh;padding:96px 0 28px;display:flex;align-items:center}
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(350px,1fr) minmax(0,1.5fr);
+  gap:clamp(16px,1.55vw,28px);align-items:center;
+}
+.hero-copy{min-width:0}
+.kicker{font-size:10px;font-weight:750;letter-spacing:.16em;color:var(--blue)}
+.hero-copy h1{
+  margin:13px 0 0;max-width:100%;width:100%;
+  font-size:clamp(48px,5.1vw,88px);line-height:.91;letter-spacing:-.075em;
+  font-weight:800;word-break:normal;overflow-wrap:normal;text-wrap:pretty;
+}
+.hero-copy h1 em{
+  font-style:normal;background:none;color:#8c7761;
+  -webkit-text-fill-color:currentColor;
+}
+.hero-copy p{max-width:430px;margin:21px 0 0;color:var(--muted);font-size:clamp(13px,.98vw,16px);line-height:1.7}
+.availability{margin-top:18px;color:var(--muted);font-size:10px;font-weight:650}
+.dot{background:#78906e;box-shadow:0 0 0 5px rgba(120,144,110,.12)}
+/* Mug stage: genuine transparent image with steam on a separate SVG layer. */
+.object.coffee-stage{
+  position:relative;height:auto;width:min(100%,470px);max-width:470px;
+  aspect-ratio:1053 / 1393;justify-self:center;align-self:center;display:block;
+  overflow:visible;isolation:isolate;perspective:none;margin:0 auto;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+  /* Coffee surface coordinates from the supplied mug-and-steam HTML. */
+  --coffee-x:35.479%;
+  --coffee-y:41.654%;
+  --coffee-rx:28.558%;
+}
+.coffee-stage:focus-visible{outline:2px solid var(--blue);outline-offset:7px;border-radius:26px}
+/* A faint glaze follows the mug's real alpha silhouette — never the rectangular image box. */
+.coffee-stage::before{
+  content:"";position:absolute;inset:0;z-index:4;pointer-events:none;opacity:0;
+  background:rgba(255,255,255,.16);
+  -webkit-mask-image:url("assets/coffee-mug.webp");mask-image:url("assets/coffee-mug.webp");
+  -webkit-mask-size:100% 100%;mask-size:100% 100%;
+  -webkit-mask-position:center;mask-position:center;
+  -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+  transition:opacity .22s ease;
+}
+/* The translucent invitation sits on the ceramic body itself, not in the surrounding whitespace. */
+.coffee-stage::after{
+  content:"Connect over coffee ↗";position:absolute;left:8%;top:66%;right:auto;bottom:auto;z-index:5;
+  padding:8px 11px;border:1px solid rgba(255,255,255,.62);border-radius:999px;
+  background:rgba(255,255,255,.28);color:rgba(24,24,24,.92);
+  box-shadow:0 5px 18px rgba(35,28,20,.08);
+  -webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);
+  font-size:11px;font-weight:650;letter-spacing:-.01em;white-space:nowrap;max-width:72%;
+  opacity:0;transform:translateY(5px);transition:opacity .22s ease,transform .22s ease;pointer-events:none;
+}
+.coffee-stage:hover::before,.coffee-stage:focus-visible::before{opacity:1}
+.coffee-stage:hover::after,.coffee-stage:focus-visible::after{opacity:1;transform:translateY(0)}
+.coffee-stage .coffee-mug{
+  position:absolute;inset:0;z-index:2;display:block;width:100%;height:100%;object-fit:contain;
+  transform:translate3d(var(--mug-x,0px),var(--mug-y,0px),0);
+  transition:transform .22s ease-out;user-select:none;-webkit-user-drag:none;
+}
+.coffee-stage canvas,.coffee-stage .steam-fallback{
+  position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
+}
+.coffee-stage canvas{z-index:3;display:block}
+.coffee-stage .steam-fallback{z-index:3;display:none}
+.coffee-stage.no-gl .steam-fallback{display:block}
+.coffee-stage.no-gl canvas{display:none}
+.coffee-stage .steam-fallback i{
+  position:absolute;bottom:calc(100% - var(--coffee-y));width:7%;height:30%;
+  left:calc(var(--coffee-x) + var(--dx));margin-left:-3.5%;
+  background:radial-gradient(ellipse at 50% 60%,rgba(120,128,140,.40),rgba(150,158,170,0) 70%);
+  filter:blur(8px);opacity:0;
+  animation:fb var(--dur) ease-in-out infinite;animation-delay:var(--del);
+}
+@keyframes fb{
+  0%{opacity:0;transform:translate(0,10%) scale(.6,.5)}
+  20%{opacity:.8}
+  100%{opacity:0;transform:translate(var(--drift),-80%) scale(1.6,1.5)}
+}
+.work-preview{min-width:0}
+.work-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:12px}
+.work-head h2{margin:0;font-size:15px;font-weight:750;letter-spacing:-.025em;color:var(--text)}
+.work-head span{font-size:10px;color:var(--muted);font-weight:700;white-space:nowrap}
+.work-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:stretch}
+.work-card{
+  display:grid;grid-template-columns:54px minmax(0,1fr) 26px;gap:9px;
+  min-width:0;min-height:94px;padding:11px;border:1px solid rgba(255,255,255,.92);
+  border-radius:21px;background:rgba(255,255,255,.83);align-items:center;
+  box-shadow:0 12px 35px rgba(39,32,25,.045);transition:transform .25s ease,box-shadow .25s ease;
+}
+.work-card:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(39,32,25,.09)}
+.work-card>div:nth-child(2){min-width:0}
+.thumb{width:54px;height:54px;border-radius:13px;overflow:hidden;background:#ece9e3}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.index{font-size:8px;font-weight:800;letter-spacing:.12em;color:#877b6d;text-transform:uppercase;line-height:1.3;overflow-wrap:anywhere}
+.work-card h3{margin:3px 0;font-size:clamp(12px,.95vw,15px);line-height:1.18;letter-spacing:-.035em;color:var(--text);overflow-wrap:anywhere}
+.work-card p{margin:0;color:#6c665f;font-size:9px;line-height:1.35;overflow-wrap:anywhere}
+.arrow{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:#f4f1ec;color:#29231e;font-size:15px}
+.a-blue,.a-lav,.a-cyan,.a-pink{background:rgba(255,255,255,.83)}
+/* Supporting sections inherit the same understated paper / charcoal design system. */
+.section{padding:clamp(70px,8vw,112px) 0}
+.section-title{max-width:760px;margin-bottom:34px}
+.section-title h2{color:var(--text)}
+.section-title p,.story-aside p,.story-card p,.about-card p,.contact p{color:var(--muted)}
+.story-card,.about-card{border-radius:24px}
+.story-card{padding:25px;background:var(--surface)}
+.story-card h3,.about-card h3{color:var(--text)}
+.num{color:var(--blue)}
+.bigword{color:rgba(136,116,95,.12)}
+.projects{grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.project{
+  grid-template-columns:1fr 1fr;height:auto;min-height:345px;border-radius:25px;
+  border:1px solid var(--border);background:var(--surface-solid);box-shadow:var(--shadow);
+}
+.project .copy{padding:clamp(22px,2.5vw,34px)}
+.project .copy h3{color:var(--text)}
+.project .thesis{color:var(--muted)}
+.project .visual{height:100%;min-height:300px;background:rgba(135,119,99,.045);padding:22px}
+.project .visual img{max-width:100%;max-height:265px;object-fit:contain;box-shadow:0 16px 35px rgba(30,25,20,.10)}
+.project.wall,.project.dual,.project.skills,.project.mallicks{background:var(--surface-solid)}
+.project .meta span{background:rgba(136,116,95,.075);color:var(--muted);border:1px solid var(--border)}
+.read b{background:#181818;color:#fff}
+.about{grid-template-columns:1.08fr .92fr;gap:17px}
+.about-card{padding:clamp(22px,3vw,34px)}
+.about-profile{display:grid;grid-template-columns:128px minmax(0,1fr);gap:22px;align-items:start}
+.about-portrait{display:block;width:128px;height:164px;object-fit:cover;object-position:center 24%;border-radius:18px;box-shadow:0 12px 30px rgba(30,24,18,.13)}
+.about-profile-copy h3{margin:0 0 12px;font-size:25px;line-height:1.05;letter-spacing:-.045em}
+.about-profile-copy p{font-size:13px;line-height:1.65;margin:0 0 10px}
+.facts{margin-top:22px;gap:9px}
+.fact{background:rgba(136,116,95,.045);border:1px solid var(--border);border-radius:15px}
+.fact span{color:var(--muted)}
+.tags span{background:var(--surface-solid);border-color:var(--border);color:var(--muted)}
+.contact h2{color:var(--text)}
+.contact .actions a{background:var(--surface-solid);border:1px solid var(--border);color:var(--text)}
+.contact .actions .primary{background:#181818;border-color:#181818;color:#fff}
+footer{color:var(--muted);border-top:1px solid var(--border)}
+/* Explicit dark mode for all homepage components. Detailed case studies keep their individual palettes and toggles. */
+html[data-theme="dark"] .navlinks a,html.dark .navlinks a{color:#c3bbb0}
+html[data-theme="dark"] .navlinks a:hover,html.dark .navlinks a:hover{background:rgba(255,255,255,.08);color:#fff}
+html[data-theme="dark"] .navlinks .cta,html.dark .navlinks .cta,
+html[data-theme="dark"] .contact .actions .primary,html.dark .contact .actions .primary{background:#f2ede5;color:#171512;border-color:#f2ede5}
+html[data-theme="dark"] .hero-copy h1 em,html.dark .hero-copy h1 em{color:#cfb89e}
+html[data-theme="dark"] .work-card,html.dark .work-card{background:rgba(34,31,27,.9);border-color:rgba(255,255,255,.1)}
+html[data-theme="dark"] .work-card h3,html.dark .work-card h3{color:#f3eee7}
+html[data-theme="dark"] .work-card p,html.dark .work-card p{color:#b4aba0}
+html[data-theme="dark"] .arrow,html.dark .arrow{background:#29251f;color:#f3eee7}
+html[data-theme="dark"] .thumb,html.dark .thumb{background:#2a2722}
+html[data-theme="dark"] .project,html.dark .project,
+html[data-theme="dark"] .project.wall,html[data-theme="dark"] .project.dual,
+html[data-theme="dark"] .project.skills,html[data-theme="dark"] .project.mallicks,
+html.dark .project.wall,html.dark .project.dual,html.dark .project.skills,html.dark .project.mallicks{background:var(--surface-solid);border-color:var(--border)}
+html[data-theme="dark"] .project .visual,html.dark .project .visual{background:rgba(255,255,255,.025)}
+html[data-theme="dark"] .project .meta span,html.dark .project .meta span{background:rgba(255,255,255,.055);color:var(--muted)}
+html[data-theme="dark"] .read b,html.dark .read b{background:#eee8df;color:#171512}
+html[data-theme="dark"] .fact,html.dark .fact{background:rgba(255,255,255,.035)}
+html[data-theme="dark"] .tags span,html.dark .tags span,
+html[data-theme="dark"] .contact .actions a,html.dark .contact .actions a{background:rgba(255,255,255,.045);color:var(--text)}
+html[data-theme="dark"] .contact .actions .primary,html.dark .contact .actions .primary{background:#f2ede5;color:#171512}
+@media(prefers-reduced-motion:reduce){
+  .coffee-mug{transition:none!important}
+  .work-card,.project,.theme-toggle{transition:none!important}
+  .coffee-stage .steam-fallback i{animation:none!important;opacity:.5;transform:translateY(-40%)}
+}
+@media(max-width:1100px){
+  .container{width:min(calc(100% - 48px),var(--max))}
+  .hero{min-height:0;padding:102px 0 44px}
+  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:26px}
+  .hero-copy{grid-column:1;grid-row:1}
+  .object.coffee-stage{grid-column:2;grid-row:1;width:min(100%,420px)}
+  .work-preview{grid-column:1/-1;grid-row:2}
+  .work-list{gap:12px}
+  .work-card{min-height:100px}
+}
+@media(max-width:760px){
+  .container{width:min(calc(100% - 30px),680px)}
+  .nav{top:10px;width:calc(100% - 20px);height:52px;padding:7px 8px 7px 14px;gap:8px}
+  .navlinks{margin-left:auto;gap:2px}
+  .navlinks a{font-size:10px;padding:8px 9px}
+  .theme-toggle{width:31px;height:31px}
+  .hero{min-height:0;padding:88px 0 36px;display:block}
+  .hero-grid{display:flex;flex-direction:column;gap:26px;align-items:stretch}
+  .hero-copy{order:1}
+  .hero-copy h1{font-size:clamp(46px,11.5vw,72px);line-height:.95;letter-spacing:-.07em;max-width:8ch}
+  .hero-copy p{font-size:14px;max-width:42em;margin-top:18px}
+  .availability{margin-top:14px}
+  .object.coffee-stage{order:2;width:min(100%,390px);margin:-10px auto 0}
+  .work-preview{order:3}
+  .work-head h2{font-size:15px}
+  .work-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .work-card{grid-template-columns:45px minmax(0,1fr);min-height:92px;padding:9px;position:relative;padding-right:28px;gap:8px;border-radius:16px}
+  .thumb{width:45px;height:48px;border-radius:10px}
+  .work-card .arrow{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:22px;height:22px;font-size:12px}
+  .work-card h3{font-size:12px}
+  .work-card p{font-size:8px;line-height:1.3}
+  .index{font-size:7px;letter-spacing:.09em}
+  .projects{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .project{grid-template-columns:1fr;grid-template-rows:auto 160px;min-height:0;border-radius:20px}
+  .project .copy{padding:18px 16px;gap:15px}
+  .project .copy h3{font-size:clamp(22px,5.6vw,31px)}
+  .project .thesis{font-size:10px}
+  .project .visual{min-height:0;height:160px;padding:10px}
+  .project .visual img{max-height:140px}
+  .about{grid-template-columns:1fr}
+  .about-profile{grid-template-columns:110px minmax(0,1fr);gap:17px}
+  .about-portrait{width:110px;height:145px}
+  .about-profile-copy h3{font-size:22px}
+  .about-profile-copy p{font-size:12px}
+  .section{padding:68px 0}
+  .section-title{margin-bottom:25px}
+  .section-title h2{font-size:clamp(29px,7vw,40px)}
+}
+@media(max-width:520px){
+  .container{width:calc(100% - 28px)}
+  .nav{width:calc(100% - 16px);padding-left:11px}
+  .brand{font-size:12px}
+  .navlinks a:not(.cta){display:none}
+  .hero-copy h1{font-size:clamp(44px,12vw,59px);max-width:9ch}
+  .object.coffee-stage{width:min(100%,350px)}
+  .work-list{grid-template-columns:1fr}
+  .work-card{grid-template-columns:52px minmax(0,1fr) 25px;min-height:82px;padding:10px}
+  .thumb{width:52px;height:48px}
+  .work-card .arrow{position:static;transform:none;width:25px;height:25px}
+  .work-card h3{font-size:13px}
+  .work-card p{font-size:9px}
+  .projects{grid-template-columns:1fr}
+  .project{grid-template-columns:1fr;grid-template-rows:auto 190px}
+  .project .visual{height:190px}
+  .project .visual img{max-height:165px}
+  .about-profile{grid-template-columns:1fr;gap:17px}
+  .about-portrait{width:100%;height:240px;max-width:240px;object-position:center 25%}
+  .facts{grid-template-columns:1fr 1fr}
+  .footer-row{flex-direction:column;gap:8px}
+}
+
+
+
+/* Case-study cover grid: give the imagery more room and trim dead space. */
+@media (min-width: 761px) {
+  .project { min-height: 305px; }
+  .project .copy { padding: clamp(20px, 2.2vw, 28px); }
+  .project .visual {
+    min-height: 265px;
+    padding: 8px;
+  }
+  .project .visual img {
+    max-width: 100%;
+    max-height: 285px;
+    object-fit: contain;
+  }
+}
+@media (max-width: 760px) {
+  .project .visual { padding: 6px; }
+  .project .visual img { max-height: 148px; }
+}
+@media (max-width: 520px) {
+  .project .visual { padding: 6px; }
+  .project .visual img { max-height: 178px; }
+}
+
+
+
+/* FIX: the legacy mobile card layout left a second explicit grid row on desktop.
+   That unused row was creating the large blank band below every case-study cover. */
+@media (min-width: 761px) {
+  .projects { align-items: start; grid-auto-rows: auto; }
+  .projects > .project {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    align-self: start;
+  }
+  .projects > .project .copy { min-height: 0; }
+  .projects > .project .visual {
+    grid-row: 1;
+    height: auto !important;
+    min-height: 280px;
+    align-self: stretch;
+    padding: 8px;
+  }
+  .projects > .project .visual img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+  }
+}
+@media (max-width: 760px) {
+  .projects > .project {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto 160px !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .projects > .project .visual { height: 160px !important; min-height: 0; padding: 8px; }
+}
+@media (max-width: 520px) {
+  .projects > .project { grid-template-rows: auto 190px !important; }
+  .projects > .project .visual { height: 190px !important; }
+}
+
+
+
+/* Final case-study cover alignment: equal cards, constrained grid items and paired visual/text columns. */
+@media (min-width: 761px) {
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: auto;
+    align-items: stretch;
+    min-width: 0;
+    width: 100%;
+  }
+  .projects > .project {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    grid-template-rows: minmax(0, 1fr) !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 365px !important;
+    height: auto !important;
+    align-self: stretch;
+    overflow: hidden;
+  }
+  .projects > .project > .copy,
+  .projects > .project > .visual {
+    grid-row: 1;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  /* The first row leads with its visual; the second row leads with its copy. */
+  .projects > .project.wall > .visual,
+  .projects > .project.dual > .visual { grid-column: 1; }
+  .projects > .project.wall > .copy,
+  .projects > .project.dual > .copy { grid-column: 2; }
+  .projects > .project.skills > .copy,
+  .projects > .project.mallicks > .copy { grid-column: 1; }
+  .projects > .project.skills > .visual,
+  .projects > .project.mallicks > .visual { grid-column: 2; }
+
+  .projects > .project > .copy {
+    padding: clamp(18px, 1.65vw, 27px);
+    overflow-wrap: anywhere;
+  }
+  .projects > .project > .copy > div:first-child { min-width: 0; max-width: 100%; }
+  .projects > .project .copy h3 {
+    max-width: 100%;
+    font-size: clamp(27px, 2.35vw, 36px);
+    line-height: .99;
+    letter-spacing: -.065em;
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+  }
+  .projects > .project .thesis {
+    max-width: 100%;
+    font-size: clamp(12px, .95vw, 14px);
+    overflow-wrap: anywhere;
+  }
+  .projects > .project .meta { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+  .projects > .project .meta span { max-width: 100%; overflow-wrap: anywhere; }
+  .projects > .project > .visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 365px;
+    height: 100%;
+    padding: 10px;
+    overflow: hidden;
+  }
+  .projects > .project > .visual img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 290px;
+    object-fit: contain;
+  }
+}
+@media (max-width: 760px) {
+  .projects > .project {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto 160px !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .projects > .project > .copy { grid-column: 1 !important; grid-row: 1 !important; min-width: 0; }
+  .projects > .project > .visual { grid-column: 1 !important; grid-row: 2 !important; width: 100%; height: 160px !important; min-height: 0 !important; }
+}
+
+
+
+/* Final hero balance: more room for the headline, centred coffee, one-column Selected Work. */
+.work-list {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+@media (min-width: 1101px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.22fr) minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: clamp(18px, 1.4vw, 24px);
+    align-items: center;
+  }
+  .hero-copy { grid-column: 1; grid-row: 1; }
+  .object.coffee-stage {
+    grid-column: 2; grid-row: 1;
+    width: min(100%, 500px); max-width: 500px;
+    justify-self: center;
+  }
+  .work-preview { grid-column: 3; grid-row: 1; min-width: 0; }
+  .hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(50px, 4.05vw, 74px);
+    line-height: .97;
+    letter-spacing: -.068em;
+  }
+  .hero-copy p { max-width: 42ch; }
+  .work-list { grid-template-columns: minmax(0, 1fr) !important; gap: 10px; }
+  .work-card {
+    grid-template-columns: 54px minmax(0, 1fr) 28px;
+    gap: 11px; min-height: 82px; height: auto; padding: 11px 13px;
+  }
+  .thumb { width: 54px; height: 54px; }
+  .work-card h3 { font-size: clamp(13px, .9vw, 15px); }
+  .work-card p { font-size: 10px; line-height: 1.4; }
+  .work-card .arrow { width: 28px; height: 28px; }
+}
+
+
+/* Final type-size refinement: stronger hero label and headline hierarchy. */
+@media (min-width: 761px) {
+  .hero-copy .kicker {
+    font-size: 12px;
+    letter-spacing: .16em;
+  }
+}
+@media (min-width: 1101px) {
+  .hero-copy h1 {
+    font-size: clamp(56px, 4.5vw, 82px);
+    line-height: .98;
+  }
+}
+@media (max-width: 760px) {
+  .hero-copy .kicker {
+    font-size: 10px;
+    letter-spacing: .14em;
+  }
+  .hero-copy h1 {
+    font-size: clamp(46px, 12.4vw, 62px);
+    line-height: .98;
+  }
+}
+@media (max-width: 520px) {
+  .hero-copy h1 {
+    font-size: clamp(44px, 12.4vw, 56px);
+  }
+}
+
 </style>
+
+<style id="portfolio-typography-alignment-polish">
+/* Portfolio-wide typography and spacing refinement.
+   Keep each project's colour system, imagery and interactions unchanged. */
+html { text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
+body { text-rendering: optimizeLegibility; font-kerning: normal; }
+
+body h1,
+body .hero h1,
+body .hero-copy h1 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing: -0.035em !important;
+  line-height: 1.04 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: manual;
+  text-wrap: balance;
+}
+body h2 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.10 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: manual;
+  text-wrap: balance;
+}
+body h3 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.18 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: manual;
+  text-wrap: pretty;
+}
+body h4 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing: -0.005em !important;
+  line-height: 1.24 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+body h5,
+body h6 {
+  font-family: Inter, "Helvetica Neue", Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+  line-height: 1.30 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+
+/* Small uppercase labels should remain legible rather than cramped. */
+body .kicker,
+body .eyebrow,
+body .number,
+body .index,
+body .num,
+body .caption .label {
+  line-height: 1.45;
+  letter-spacing: .12em;
+}
+
+/* Align the reading column across case studies without changing their card designs. */
+body .container,
+body .wrap {
+  width: min(calc(100% - clamp(32px, 5vw, 64px)), 1180px) !important;
+  margin-inline: auto !important;
+}
+body .section {
+  padding-block: clamp(64px, 6.5vw, 92px) !important;
+}
+body .section.compact {
+  padding-block: clamp(44px, 5vw, 66px) !important;
+}
+body .section-head p,
+body .section-title > p {
+  line-height: 1.65;
+  max-width: 64ch;
+}
+
+@media (max-width: 700px) {
+  body .container,
+  body .wrap {
+    width: calc(100% - 32px) !important;
+  }
+  body .section {
+    padding-block: 48px !important;
+  }
+  body .section.compact {
+    padding-block: 36px !important;
+  }
+  body h1,
+  body .hero h1,
+  body .hero-copy h1 {
+    letter-spacing: -0.028em !important;
+    line-height: 1.06 !important;
+  }
+  body h2 { letter-spacing: -0.02em !important; line-height: 1.12 !important; }
+  body h3 { letter-spacing: -0.01em !important; line-height: 1.2 !important; }
+}
+
+
+/* Behance link near About: a restrained, theme-aware pill button. */
+.behance-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 13px;
+  padding: 12px 17px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-solid);
+  color: var(--text);
+  font: 700 12px/1.2 Inter, Arial, sans-serif;
+  letter-spacing: .005em;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(30,24,18,.055);
+  transition: transform .22s ease, background-color .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.behance-button span {
+  display: inline-grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: rgba(136,116,95,.10);
+  font-size: 15px;
+  line-height: 1;
+}
+.behance-button:hover {
+  transform: translateY(-2px);
+  background: rgba(136,116,95,.075);
+  border-color: rgba(136,116,95,.35);
+  box-shadow: 0 12px 28px rgba(30,24,18,.09);
+}
+.behance-button:focus-visible {
+  outline: 3px solid #8b7763;
+  outline-offset: 3px;
+}
+html[data-theme="dark"] .behance-button,
+html.dark .behance-button {
+  background: rgba(255,255,255,.045);
+  color: var(--text);
+  border-color: var(--border);
+  box-shadow: 0 8px 22px rgba(0,0,0,.12);
+}
+html[data-theme="dark"] .behance-button span,
+html.dark .behance-button span { background: rgba(255,255,255,.10); }
+@media (max-width: 520px) {
+  .behance-button { margin-top: 11px; padding: 12px 15px; font-size: 11px; }
+}
+
+</style>
+
 </head>
 <body>
 
@@ -457,25 +1141,17 @@ body,button,input,textarea,select,a,h1,h2,h3,h4,h5,h6,p,span,div{font-family:Int
   <div class="availability"><i class="dot"></i> Open to product design opportunities</div>
 </div>
 
-<div class="object identity-orb" id="object" aria-label="Interactive identity hologram">
-  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
-  <div class="glow"></div>
-  <div class="orbit o1"></div><div class="orbit o2"></div><div class="orbit o3"></div>
-  <div class="fluid fluid-a"></div><div class="fluid fluid-b"></div><div class="fluid fluid-c"></div>
-  <div class="holo-shell">
-    <div class="scanline"></div>
-    <div class="holo-top">INTERFACE / HUMAN / SYSTEM</div>
-    <div class="portrait-wrap"><img src="assets/pranish-photo.jpg" alt="Portrait of Pranish Katta"></div>
-    <div class="identity-name">PRANISH<span>KATTA</span></div>
-    <div class="identity-role">UX · PRODUCT · INTERACTION</div>
-    <div class="identity-line"><i></i><span>PEOPLE × SYSTEMS</span><i></i></div>
+<a class="object coffee-stage" id="object" href="mailto:pranishreddy.k@gmail.com?subject=Connecting%20over%20coffee%3A%20%5BProject%20%2F%20Opportunity%5D&body=Hi%20Pranish%2C%0D%0A%0D%0AI%20explored%20your%20portfolio%20and%20was%20really%20impressed%20by%20your%20projects.%20I%27d%20love%20to%20schedule%20a%20short%20virtual%20meeting%20to%20discuss%20how%20we%20might%20work%20together.%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you%21%0D%0A%0D%0AWarm%20regards%2C%0D%0A%0D%0A%5BTheir%20Name%5D" aria-label="Email Pranish to connect over coffee" title="Connect over coffee — open a prefilled email">
+  <img class="coffee-mug" src="assets/coffee-mug.webp" alt="A speckled ivory ceramic mug filled with freshly brewed black coffee." width="1053" height="1393" fetchpriority="high" decoding="async">
+  <canvas id="steam" aria-hidden="true"></canvas>
+  <div class="steam-fallback" aria-hidden="true">
+    <i style="--dx:-5%; --dur:6.4s; --del:0s; --drift:-14%"></i>
+    <i style="--dx:0%; --dur:7.6s; --del:-2.6s; --drift:10%"></i>
+    <i style="--dx:5%; --dur:8.8s; --del:-5.2s; --drift:-8%"></i>
   </div>
-  <span class="node n1"></span><span class="node n2"></span><span class="node n3"></span><span class="node n4"></span>
-  <div class="cursor-glass" id="cursorGlass"></div>
-  <div class="note">Move your cursor · the glass follows</div>
-</div>
+</a>
 
-<div class="work-preview">
+ <div class="work-preview">
   <div class="work-head"><h2>Selected work</h2><span>04 case studies</span></div>
   <div class="work-list">
     <a class="work-card glass a-blue" href="case-studies/wallcue.html"><div class="thumb"><img src="assets/wallcue-preview.webp" alt=""></div><div><div class="index">01 · Spatial / Product</div><h3>WallCue</h3><p>Turning the shared wall into a peace treaty.</p></div><span class="arrow">↗</span></a>
@@ -522,9 +1198,24 @@ body,button,input,textarea,select,a,h1,h2,h3,h4,h5,h6,p,span,div{font-family:Int
 
 <section class="section" id="about">
 <div class="container">
-<div class="section-title"><div class="kicker">A little more about me</div><h2>Research-minded. Product-focused. Comfortable with complexity.</h2></div>
+<div class="section-title"><div class="kicker">A little more about me</div><h2>Research-minded. Product-focused. Comfortable with complexity.</h2><a class="behance-button" href="https://www.behance.net/pranishreddy" target="_blank" rel="noopener noreferrer" aria-label="See my other projects and work on Behance">See my other projects and work <span aria-hidden="true">↗</span></a></div>
 <div class="about">
-<article class="about-card glass"><h3>From product design to UX.</h3><p>I have 3+ years of experience designing user-centred digital products for international clients across enterprise platforms, healthcare and consumer applications. I work across discovery, research, information architecture, interaction design, prototyping and design systems.</p><p>I am currently completing an MSc in User Experience Design at Kingston University, London.</p><div class="facts"><div class="fact"><b>3+ years</b><span>Professional design experience</span></div><div class="fact"><b>MSc</b><span>User Experience Design · Kingston</span></div><div class="fact"><b>B.Des</b><span>Product Design · United World Institute of Design</span></div><div class="fact"><b>Figma + AI</b><span>Design, prototyping & assisted research workflows</span></div></div></article>
+<article class="about-card glass about-profile-card">
+  <div class="about-profile">
+    <img class="about-portrait" src="assets/pranish-photo.jpg" alt="Portrait of Pranish Katta" width="540" height="675" loading="lazy">
+    <div class="about-profile-copy">
+      <h3>From product design to UX.</h3>
+      <p>I have 3+ years of experience designing user-centred digital products for international clients across enterprise platforms, healthcare and consumer applications. I work across discovery, research, information architecture, interaction design, prototyping and design systems.</p>
+      <p>I recently completed an MSc in User Experience Design at Kingston University, London.</p>
+    </div>
+  </div>
+  <div class="facts">
+    <div class="fact"><b>3+ years</b><span>Professional design experience</span></div>
+    <div class="fact"><b>MSc</b><span>User Experience Design · Kingston</span></div>
+    <div class="fact"><b>B.Des</b><span>Product Design · United World Institute of Design</span></div>
+    <div class="fact"><b>Figma + AI</b><span>Design, prototyping &amp; assisted research workflows</span></div>
+  </div>
+</article>
 <article class="about-card glass"><h3>What I bring to a product team.</h3><p>I care about the gap between a requirement and a working experience. That means questioning assumptions, testing early, communicating clearly with stakeholders and developers, and knowing when a finding should ship now versus become a larger product conversation.</p><div class="tags"><span>User research</span><span>Usability testing</span><span>Information architecture</span><span>Interaction design</span><span>Wireframing</span><span>Prototyping</span><span>Design systems</span><span>Accessibility</span><span>Product strategy</span><span>Design-to-dev handoff</span></div></article>
 </div>
 </div>
@@ -543,37 +1234,170 @@ body,button,input,textarea,select,a,h1,h2,h3,h4,h5,h6,p,span,div{font-family:Int
 <footer><div class="container footer-row"><span>© 2026 Pranish Katta</span><span>UX · Product · Research · Interaction</span></div></footer>
 
 <script>
-const object=document.getElementById('object');
-const nodes=[...document.querySelectorAll('.node')];
-let raf;
-object.addEventListener('pointermove',e=>{
-  const r=object.getBoundingClientRect();
-  const x=e.clientX-(r.left+r.width/2);
-  const y=e.clientY-(r.top+r.height/2);
-  cancelAnimationFrame(raf);
-  raf=requestAnimationFrame(()=>{
-    const px=Math.max(-135,Math.min(135,x));
-    const py=Math.max(-150,Math.min(150,y));
-    object.style.setProperty('--mx',`${px}px`);
-    object.style.setProperty('--my',`${py}px`);
-    object.style.setProperty('--sx',`${px*.08}px`);
-    object.style.setProperty('--sy',`${py*.08}px`);
-    object.style.setProperty('--rx',`${py*-.015}deg`);
-    object.style.setProperty('--ry',`${px*.02}deg`);
+(function(){
+  const stage = document.getElementById('object');
+  const mug = stage && stage.querySelector('.coffee-mug');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!stage || !mug || reduceMotion.matches) return;
+  let raf = 0;
+  stage.addEventListener('pointermove', function(event){
+    const rect = stage.getBoundingClientRect();
+    const dx = (event.clientX - rect.left - rect.width / 2) / rect.width;
+    const dy = (event.clientY - rect.top - rect.height / 2) / rect.height;
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function(){
+      mug.style.setProperty('--mug-x', (dx * 5).toFixed(2) + 'px');
+      mug.style.setProperty('--mug-y', (dy * 4).toFixed(2) + 'px');
+    });
   });
-});
-object.addEventListener('pointerleave',()=>{
-  object.style.setProperty('--mx','0px');
-  object.style.setProperty('--my','0px');
-  object.style.setProperty('--sx','0px');
-  object.style.setProperty('--sy','0px');
-  object.style.setProperty('--rx','0deg');
-  object.style.setProperty('--ry','0deg');
-});
-document.querySelectorAll('.work-card').forEach((card,i)=>{
-  card.addEventListener('mouseenter',()=>nodes[i]?.classList.add('active'));
-  card.addEventListener('mouseleave',()=>nodes[i]?.classList.remove('active'));
-});
+  stage.addEventListener('pointerleave', function(){
+    mug.style.setProperty('--mug-x', '0px');
+    mug.style.setProperty('--mug-y', '0px');
+  });
+})();
+</script>
+
+<script>
+/* =========================================================
+   STEAM
+   A small WebGL fragment shader (no libraries). Three plumes of vapour rise from three
+   different points on the coffee surface. Each plume is made from flowing, domain warped noise,
+   so it curls, thins, widens and fades irregularly, and never repeats in a visible loop.
+   Edit the values in STEAM to change the look.
+   ========================================================= */
+(function () {
+  var STEAM = {
+    strength: 0.95,      // overall visibility, 0 to 1
+    height: 0.92,        // plume height as a fraction of the space above the coffee
+    speed: 1.0,          // 1 is calm; 0.6 is slower
+    spread: 1.0,         // how much the steam fans out into a soft cloud, 0 is thin columns only, 1 is a lot
+    resolution: 0.6      // render scale. Steam is soft, so lower is fine and cheaper
+  };
+
+  var stage = document.getElementById('object');
+  var canvas = document.getElementById('steam');
+  var gl = canvas.getContext('webgl', { premultipliedAlpha: true, alpha: true, antialias: false, powerPreference: 'low-power' });
+  if (!gl) { stage.classList.add('no-gl'); return; }
+
+  var vs = 'attribute vec2 a; void main(){ gl_Position = vec4(a,0.,1.); }';
+  var fs = [
+    'precision highp float;',
+    'uniform vec2 u_res; uniform float u_t; uniform vec2 u_o; uniform float u_rx; uniform float u_h; uniform float u_s; uniform float u_sp; uniform float u_cloud;',
+    'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); }',
+    'float noise(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f);',
+    '  return mix(mix(hash(i),hash(i+vec2(1.,0.)),f.x), mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),f.x), f.y); }',
+    'float fbm(vec2 p){ float a=.5, s=0.; mat2 r = mat2(0.80,-0.60,0.60,0.80); for(int i=0;i<4;i++){ s+=a*noise(p); p=r*p*2.02+vec2(17.1,9.7); a*=.5; } return s; }',
+
+    /* one plume: x0 = start offset on the coffee, seed = personality, w0 = base width, amp = density */
+    'float plume(vec2 p, float x0, float seed, float w0, float amp, float t){',
+    '  float h = p.y; if (h <= 0.) return 0.;',
+    '  float hh = h / u_h;',
+    '  float sway = sin(hh*4.2 + t*0.45 + seed*6.0)*0.020*hh + sin(hh*9.0 - t*0.8 + seed)*0.007*hh;',
+    '  float cx = x0 + sway + hh*hh*0.035*sin(t*0.12 + seed*3.0);',
+    '  float w = w0 + 0.105*hh;',                                   /* widens as it rises */
+    '  float d = (p.x - cx) / w;',
+    '  vec2 q = vec2(p.x*15.0, h*4.0 - t*0.36) + seed*7.0;',     /* noise flows upward */
+    '  float warp = fbm(q*0.7 + vec2(0., t*0.05));',
+    '  q += (warp-0.5)*2.0;',
+    '  float n = fbm(q);',
+    '  float core = exp(-d*d*1.5);',
+    '  float tend = smoothstep(0.36, 0.72, n);',                    /* irregular tendrils and gaps */
+    '  float env = smoothstep(0.0, 0.07, h) * pow(clamp(1.-hh,0.,1.), 1.1);',
+    '  return core*tend*env*amp;',
+    '}',
+
+    /* billow: a soft cloud that spreads out as it rises, so the steam fans out instead of staying in thin columns */
+    'float billow(vec2 p, float rx, float t){',
+    '  float h = p.y; if (h <= 0.) return 0.;',
+    '  float hh = h / u_h;',
+    '  float wd = rx*(0.60 + 0.95*hh);',                              /* cone that widens with height */
+    '  float cx = sin(t*0.16 + hh*2.6)*0.045*hh + sin(t*0.07 + 1.3)*0.03*hh;',
+    '  float d = (p.x - cx) / wd;',
+    '  vec2 q = vec2(p.x*5.5, h*3.4 - t*0.26) + vec2(31.0, 5.0);',
+    '  float warp = fbm(q*0.8 + vec2(3.1, -t*0.07));',
+    '  q += (warp-0.5)*2.8;',
+    '  float n = fbm(q);',
+    '  float cloud = smoothstep(0.30, 0.82, n);',                      /* big soft billows */
+    '  float env = smoothstep(0.02, 0.20, h) * pow(clamp(1.-hh,0.,1.), 0.9) * (0.40 + 0.60*smoothstep(0.08, 0.55, hh));',
+    '  return exp(-d*d*1.15)*cloud*env;',
+    '}',
+
+    'void main(){',
+    '  vec2 uv = gl_FragCoord.xy / u_res;',
+    '  float asp = u_res.x / u_res.y;',
+    '  vec2 p = vec2((uv.x - u_o.x)*asp, uv.y - u_o.y);',          /* units: image heights, origin at the coffee centre */
+    '  float rx = u_rx*asp;',
+    '  float t = u_t*u_sp;',
+    '  float a = plume(p, -0.42*rx, 1.7, 0.015, 1.00, t);',
+    '  float b = plume(p,  0.02*rx, 4.1, 0.019, 1.00, t + 3.1);',
+    '  float c = plume(p,  0.46*rx, 7.3, 0.013, 0.90, t + 6.4);',
+    '  float e = plume(p, -0.18*rx, 9.1, 0.017, 0.80, t + 9.2);',
+    '  float f = plume(p,  0.26*rx, 2.4, 0.016, 0.80, t + 12.5);',
+    '  float g = billow(p, rx, t) * u_cloud;',
+    '  float d = 1. - (1.-a)*(1.-b)*(1.-c)*(1.-e)*(1.-f)*(1.-g);',
+    '  d *= smoothstep(0.0, 0.16, uv.x) * smoothstep(1.0, 0.84, uv.x) * smoothstep(1.0, 0.92, uv.y);',   /* fade out before the canvas edges so no box shows */
+    '  float al = clamp(d*u_s, 0., 0.86);',
+    '  vec3 col = mix(vec3(0.66,0.70,0.77), vec3(1.0), smoothstep(0.22,0.70,d));',   /* white vapour: bright core, faint cool grey edges so it still reads on a light page */
+    '  gl_FragColor = vec4(col*al, al);',                           /* premultiplied */
+    '}'
+  ].join('\n');
+
+  function sh(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null; }
+  var v = sh(gl.VERTEX_SHADER, vs), f = sh(gl.FRAGMENT_SHADER, fs);
+  if (!v || !f) { stage.classList.add('no-gl'); return; }
+  var pr = gl.createProgram(); gl.attachShader(pr, v); gl.attachShader(pr, f); gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) { stage.classList.add('no-gl'); return; }
+  gl.useProgram(pr);
+
+  var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(pr, 'a'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  var U = {}; ['u_res','u_t','u_o','u_rx','u_h','u_s','u_sp','u_cloud'].forEach(function (n) { U[n] = gl.getUniformLocation(pr, n); });
+
+  /* coffee position comes from the CSS variables on .stage, so there is one place to edit */
+  function readCoffee() {
+    var cs = getComputedStyle(stage);
+    return { x: parseFloat(cs.getPropertyValue('--coffee-x')) / 100, y: parseFloat(cs.getPropertyValue('--coffee-y')) / 100, rx: parseFloat(cs.getPropertyValue('--coffee-rx')) / 100 };
+  }
+  var coffee = readCoffee();
+
+  function resize() {
+    var r = stage.getBoundingClientRect();
+    var dpr = Math.min(window.devicePixelRatio || 1, 2) * STEAM.resolution;
+    var w = Math.max(2, Math.round(r.width * dpr)), h = Math.max(2, Math.round(r.height * dpr));
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
+    coffee = readCoffee();
+  }
+
+  var t0 = performance.now(), raf = 0, running = false;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var STILL_TIME = 11.0;       /* a pleasant frozen moment, used for reduced motion */
+
+  function draw(t) {
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform2f(U.u_res, canvas.width, canvas.height);
+    gl.uniform1f(U.u_t, t);
+    gl.uniform2f(U.u_o, coffee.x, 1 - coffee.y);
+    gl.uniform1f(U.u_rx, coffee.rx);
+    gl.uniform1f(U.u_h, coffee.y * STEAM.height);
+    gl.uniform1f(U.u_s, STEAM.strength);
+    gl.uniform1f(U.u_sp, STEAM.speed);
+    gl.uniform1f(U.u_cloud, STEAM.spread);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  }
+  function frame(now) { draw((now - t0) / 1000 + 5.0); raf = requestAnimationFrame(frame); }
+  function start() { if (running || reduce.matches) return; running = true; raf = requestAnimationFrame(frame); }
+  function stop() { running = false; cancelAnimationFrame(raf); }
+  function apply() { resize(); if (reduce.matches) { stop(); draw(STILL_TIME); } else { start(); } }
+
+  /* pause when the tab is hidden or the hero is off screen, to save battery */
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : apply(); });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { e[0].isIntersecting ? apply() : stop(); }).observe(stage);
+  if ('ResizeObserver' in window) new ResizeObserver(function () { resize(); if (reduce.matches) draw(STILL_TIME); }).observe(stage); else window.addEventListener('resize', apply);
+  (reduce.addEventListener ? reduce.addEventListener('change', apply) : reduce.addListener(apply));
+  apply();
+  window.__steam = { stop: stop, start: start, running: function () { return running; } };   /* handy for testing */
+})();
 </script>
 
 <script>
