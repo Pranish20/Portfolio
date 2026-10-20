@@ -1112,6 +1112,48 @@ html.dark .behance-button span { background: rgba(255,255,255,.10); }
   .behance-button { margin-top: 11px; padding: 12px 15px; font-size: 11px; }
 }
 
+
+
+/* Hero Selected Work: richer, photographic device mockup thumbnails */
+.work-preview .work-card {
+  grid-template-columns: 64px minmax(0, 1fr) 28px;
+  gap: 12px;
+}
+.work-preview .thumb {
+  width: 64px;
+  height: 62px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 13px;
+  background: #f2eee7;
+  border: 1px solid rgba(42, 34, 24, .09);
+  box-shadow: 0 4px 12px rgba(35, 27, 18, .07), inset 0 1px 0 rgba(255,255,255,.72);
+}
+.work-preview .thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.015);
+  transition: transform .32s ease;
+}
+.work-preview .thumb--skills img { object-position: 25% center; }
+.work-preview .thumb--dual-drive img { object-position: 50% 48%; }
+.work-preview .work-card:hover .thumb img,
+.work-preview .work-card:focus-visible .thumb img { transform: scale(1.06); }
+@media (max-width: 760px) {
+  .work-preview .work-card { grid-template-columns: 58px minmax(0, 1fr) 25px; gap: 9px; }
+  .work-preview .thumb { width: 58px; height: 56px; }
+}
+@media (max-width: 520px) {
+  .work-preview .work-card { grid-template-columns: 58px minmax(0, 1fr) 25px; }
+  .work-preview .thumb { width: 58px; height: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .work-preview .thumb img { transition: none; }
+}
+
 </style>
 
 </head>
@@ -1154,10 +1196,10 @@ html.dark .behance-button span { background: rgba(255,255,255,.10); }
  <div class="work-preview">
   <div class="work-head"><h2>Selected work</h2><span>04 case studies</span></div>
   <div class="work-list">
-    <a class="work-card glass a-blue" href="case-studies/wallcue.html"><div class="thumb"><img src="assets/wallcue-preview.webp" alt=""></div><div><div class="index">01 · Spatial / Product</div><h3>WallCue</h3><p>Turning the shared wall into a peace treaty.</p></div><span class="arrow">↗</span></a>
-    <a class="work-card glass a-lav" href="case-studies/dual-drive.html"><div class="thumb"><img src="assets/dual-drive-preview.webp" alt="Dual Drive preview"></div><div><div class="index">02 · Automotive / HMI</div><h3>Dual Drive</h3><p>Designing shared interaction around driver attention.</p></div><span class="arrow">↗</span></a>
-    <a class="work-card glass a-cyan" href="case-studies/skills-platform.html"><div class="thumb"><img src="assets/skills-preview.webp" alt=""></div><div><div class="index">03 · Enterprise / UX</div><h3>Skills Platform</h3><p>Designing for proof, not just polish.</p></div><span class="arrow">↗</span></a>
-    <a class="work-card glass a-pink" href="case-studies/mallicks-kitchen.html"><div class="thumb"><img src="assets/mallicks-preview.webp" alt=""></div><div><div class="index">04 · Service / Product</div><h3>Mallick's Kitchen</h3><p>Closing the reassurance gap in contactless dining.</p></div><span class="arrow">↗</span></a>
+    <a class="work-card glass a-blue" href="case-studies/wallcue.html"><div class="thumb thumb--wallcue"><img src="assets/wallcue-mockup.webp" alt="" loading="lazy" decoding="async"></div><div><div class="index">01 · Spatial / Product</div><h3>WallCue</h3><p>Turning the shared wall into a peace treaty.</p></div><span class="arrow">↗</span></a>
+    <a class="work-card glass a-lav" href="case-studies/dual-drive.html"><div class="thumb thumb--dual-drive"><img src="assets/dual-drive-mockup.webp" alt="" loading="lazy" decoding="async"></div><div><div class="index">02 · Automotive / HMI</div><h3>Dual Drive</h3><p>Designing shared interaction around driver attention.</p></div><span class="arrow">↗</span></a>
+    <a class="work-card glass a-cyan" href="case-studies/skills-platform.html"><div class="thumb thumb--skills"><img src="assets/skills-platform-mockup.webp" alt="" loading="lazy" decoding="async"></div><div><div class="index">03 · Enterprise / UX</div><h3>Skills Platform</h3><p>Designing for proof, not just polish.</p></div><span class="arrow">↗</span></a>
+    <a class="work-card glass a-pink" href="case-studies/mallicks-kitchen.html"><div class="thumb thumb--mallicks"><img src="assets/mallicks-kitchen-mockup.webp" alt="" loading="lazy" decoding="async"></div><div><div class="index">04 · Service / Product</div><h3>Mallick's Kitchen</h3><p>Closing the reassurance gap in contactless dining.</p></div><span class="arrow">↗</span></a>
   </div>
 </div>
 
@@ -1181,16 +1223,16 @@ html.dark .behance-button span { background: rgba(255,255,255,.10); }
 
 <section class="section" id="work">
 <div class="container">
-<div class="section-title"><div class="kicker">Selected work · 2021 — 2026</div><h2>Four projects. Four kinds of human–system tension.</h2><p>Each case study is a different context, but the same question keeps returning: what does the experience need to make people feel, understand or do with more confidence?</p></div>
+<div class="section-title"><div class="kicker">Selected work</div><h2>Four projects. Four kinds of human–system tension.</h2><p>Each case study is a different context, but the same question keeps returning: what does the experience need to make people feel, understand or do with more confidence?</p></div>
 <div class="projects">
 
-<a class="project glass wall" href="case-studies/wallcue.html"><div class="copy"><div><div class="number">01 / WALLCUE</div><h3>From noise monitor to diplomacy mesh.</h3><p class="thesis">A privacy-first physical and digital system designed to reduce neighbour friction without turning sound into ammunition or forcing confrontation.</p><div class="meta"><span>Product design</span><span>Hardware + digital</span><span>Privacy-first</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/wallcue-preview.webp" alt="WallCue interface"></div></a>
+<a class="project glass wall" href="case-studies/wallcue.html"><div class="copy"><div><div class="number">01 / WALLCUE</div><h3>From noise monitor to diplomacy mesh.</h3><p class="thesis">A privacy-first physical and digital system designed to reduce neighbour friction without turning sound into ammunition or forcing confrontation.</p><div class="meta"><span>Product design</span><span>Hardware + digital</span><span>Privacy-first</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/wallcue-mockup.webp" alt="WallCue mobile app presented in a smartphone mockup"></div></a>
 
-<a class="project glass dual" href="case-studies/dual-drive.html"><div class="copy"><div><div class="number">02 / DUAL DRIVE</div><h3>Designing shared interaction around driver attention.</h3><p class="thesis">A timing-aware automotive HMI that coordinates passenger input with a driver-facing HUD, prioritising safety, clarity and information timing.</p><div class="meta"><span>Automotive HMI</span><span>Human factors</span><span>Usability testing</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/dual-drive-preview.webp" alt="Dual Drive automotive HMI"></div></a>
+<a class="project glass dual" href="case-studies/dual-drive.html"><div class="copy"><div><div class="number">02 / DUAL DRIVE</div><h3>Designing shared interaction around driver attention.</h3><p class="thesis">A timing-aware automotive HMI that coordinates passenger input with a driver-facing HUD, prioritising safety, clarity and information timing.</p><div class="meta"><span>Automotive HMI</span><span>Human factors</span><span>Usability testing</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/dual-drive-mockup.webp" alt="Dual Drive automotive interface presented on a tablet mockup"></div></a>
 
-<a class="project glass skills" href="case-studies/skills-platform.html"><div class="copy"><div><div class="number">03 / SKILLS PLATFORM</div><h3>Designing for proof, not just polish.</h3><p class="thesis">An enterprise career-development platform where employee input, AI-inferred skills and manager validation needed to remain understandable and trustworthy.</p><div class="meta"><span>Enterprise UX</span><span>Usability testing</span><span>Design systems</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/skills-preview.webp" alt="Skills Platform"></div></a>
+<a class="project glass skills" href="case-studies/skills-platform.html"><div class="copy"><div><div class="number">03 / SKILLS PLATFORM</div><h3>Designing for proof, not just polish.</h3><p class="thesis">An enterprise career-development platform where employee input, AI-inferred skills and manager validation needed to remain understandable and trustworthy.</p><div class="meta"><span>Enterprise UX</span><span>Usability testing</span><span>Design systems</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/skills-platform-mockup.webp" alt="Skills Platform dashboard presented on a laptop mockup"></div></a>
 
-<a class="project glass mallicks" href="case-studies/mallicks-kitchen.html"><div class="copy"><div><div class="number">04 / MALLICK'S KITCHEN</div><h3>Design the moments of silence.</h3><p class="thesis">A contactless dining experience that treats reassurance as part of the service — connecting ordering, kitchen status, checkout and the diner's sense of certainty.</p><div class="meta"><span>Service design</span><span>Mobile product</span><span>UX research</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/mallicks-preview.webp" alt="Mallick's Kitchen"></div></a>
+<a class="project glass mallicks" href="case-studies/mallicks-kitchen.html"><div class="copy"><div><div class="number">04 / MALLICK'S KITCHEN</div><h3>Design the moments of silence.</h3><p class="thesis">A contactless dining experience that treats reassurance as part of the service — connecting ordering, kitchen status, checkout and the diner's sense of certainty.</p><div class="meta"><span>Service design</span><span>Mobile product</span><span>UX research</span></div></div><div class="read">Read case study <b>↗</b></div></div><div class="visual"><img src="assets/mallicks-kitchen-mockup.webp" alt="Mallick's Kitchen ordering app presented in a smartphone mockup"></div></a>
 
 </div>
 </div>

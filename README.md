@@ -21,3 +21,8 @@ Complete static portfolio package with consistent heading spacing, typography an
 ## Deployment
 
 Upload the contents of this folder to your static hosting root. Keep `index.html`, `assets/` and `case-studies/` together. No build command is required.
+
+
+## Selected Work mockups
+
+The four supplied photographic device mockups are used in the compact Selected Work cards in the homepage hero and in the larger Selected Work cards further down the homepage. WallCue and Mallick's Kitchen use phone mockups, Dual Drive uses the tablet interface, and Skills Platform uses the laptop/workspace image. The individual case-study cover sections remain in their original layouts.
